@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matheus | Biblioteca</title>
+  <link rel="icon" href="estante.png" type="image/png">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body {
+      background-image: url('library.png');
+      background-size: cover;
+      background-position: center;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #e0d9c5;
+    }
+
+    #navbarNav {
+      font-weight: bold;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    #searchInput {
+      background-color: #c1c6cc;
+    }
+
+    .book-container {
+      border-radius: 5px;
+      width: 350px;
+      height: 500px;
+      display: flex;
+      position: relative;
+      perspective: 1200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      margin: auto;
+      margin-top: 110px;
+    }
+
+    footer {
+            background-color: #212529;
+            color: #f8f9fa;
+            position: fixed;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+            bottom: 0;
+            width: 100%; 
+        }
+
+    .page {
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #333;
+      backface-visibility: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      background-size: cover;
+      background-position: center;
+      transition: transform 1s ease-in-out;
+    }
+
+    /* Páginas do livro */
+    .page1 { 
+      background-image: url('capa.png'); 
+      z-index: 5;
+    }
+
+    .page2 { background-image: url('fundo.png'); z-index: 10; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            }
+    .page3 { background-image: url('fundo.png'); z-index: 9;
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); 
+            }
+    .page4 { background-image: url('fundo.png'); z-index: 10; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); 
+            }
+    .page5 { background-image: url('fundo.png'); z-index: 7;
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); 
+            }            
+    .page6 { background-image: url('fundo.png'); z-index: 7; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            }
+    .page7 { background-image: url('fundo.png'); z-index: 7; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+             }
+    .page8 { background-image: url('fundo.png'); z-index: 7; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+             }
+    .page9 { background-image: url('fundo.png'); z-index: 7; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+             }
+    .page10 { background-image: url('fundo.png'); z-index: 7; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+             }
+    .page11 { background-image: url('fundo.png'); z-index: 7; 
+             align-items: center;
+             color: rgb(77, 39, 15);
+             font-size: 20px;
+             font-weight: bold;
+             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+             }
+    .page12 { background-image: url('contracapa.png'); z-index: 7; }
+    .page13 { background-image: url('fundo.png'); z-index: 7; }
+    .page14 { background-image: url('fundo.png'); z-index: 7; }
+
+    .button-container {
+      position: absolute;
+      bottom: -60px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      font-weight: bold;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<section class="col-md-12">
+  <div class="row">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">
+          <img src="estante.png" alt="Minha Marca" width="40" height="40" class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="#top">Início</a></li>
+          </ul>
+          <div class="search-container ml-auto">
+            <form class="form-inline my-2 my-lg-0">
+              <div class="input-group">
+                <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar" id="searchInput">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-light" type="button">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </div>
+</section>
+
+<section>
+  <div>
+    <div class="book-container">
+      <!-- Páginas do livro -->
+      <div class="page page1"></div> <!-- Capa -->
+      <div class="page page2"><p>Rafaela é um nome que<br>trás consigo muitas<br>curiosidades e histórias...</p></div> <!-- Página 1 -->
+      <div class="page page3"><p>De origem hebraica, <br>Rafaela é um nome forte <br> que carrega inspirações de <br> cura, proteção e divindade.<br>  </p></div> <!-- Página 2 -->
+      <div class="page page4"><p>Suas váriaveis são<br>Raffaella(italiano) e <br> Raphaela(inglês).<br></p></div> <!-- Página 3 -->
+      <div class="page page5"><p>E o seu significado é <br> "A Cura de Deus".</p></div>
+      <div class="page page6"><p>Um significado forte, <br> e bem bonito, <br> não é mesmo?</p></div>
+      <div class="page page7"><p>Dito isso...</p></div>
+      <div class="page page8"><p>RAFA ME DA UMA  <br> MOCHILAAAAAAA <br> POR FAVOR :) <br> Não vou contar pra ninguém, <br> eu juro.</p></div>
+      <div class="page page9"><p>AUTOR: <br> Matheus Fernandes</p></div>
+      <div class="page page10"><p>PÓS-CRÉDITOS...</p></div>
+      <div class="page page11"><p>A camisa da Microsoft <br> é top também tá? <br> <br> Bom trabalho!</p></div>
+      <div class="page page12"></div>
+      <div class="page page13"></div>
+      <div class="page page14"></div>
+
+      <!-- Botões -->
+      <div class="button-container">
+        <button onclick="previousPage()">Voltar</button>
+        <button onclick="nextPage()">Próxima</button>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  let currentPage = 0;
+  const pages = document.querySelectorAll('.page');
+
+  function updatePages() {
+    pages.forEach((page, index) => {
+      const rotation = -180 * (currentPage - index);
+      page.style.transform = `rotateY(${rotation}deg)`;
+
+      // As páginas visíveis ficam em cima e as outras abaixo
+      if (rotation === 0) {
+        page.style.zIndex = 5; // Página visível
+      } else {
+        page.style.zIndex = 1; // Página atrás
+      }
+    });
+  }
+
+  function nextPage() {
+    if (currentPage < pages.length - 1 && currentPage < 11) {
+      currentPage++;
+    }
+    updatePages();
+  }
+
+  function previousPage() {
+    if (currentPage > 0) {
+      currentPage--;
+    }
+    updatePages();
+  }
+
+  // Iniciar com a capa visível
+  updatePages();
+</script>
+
+</body>
+</html>
